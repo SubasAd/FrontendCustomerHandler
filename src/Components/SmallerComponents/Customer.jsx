@@ -121,13 +121,13 @@ class Customer extends Component {
 
     function getDay() {
       let today= new Date().getDate();
-      let connectionDate =  new Date(customer.ConnectionDate).getDate();
-      let subscribeDate = new Date(customer.SuscribeDate);
-      if( (new Date().getMonth()-subscribeDate.getMonth()) >1.2 )  return ((connectionDate -today)-30 )
-      console.log("Connection Date =" );
+     // let connectionDate =  new Date(customer.ConnectionDate).getDate();
+      let subscribeDate = new Date(customer.SuscribeDate).getDate();
+      if( (new Date().getMonth()-new Date(customer.SuscribeDate).getMonth()) >1.2 )  return ((subscribeDate -today)-30 )
+    
     
    
-      return connectionDate -today;
+      return subscribeDate -today;
     }
   }
 }
