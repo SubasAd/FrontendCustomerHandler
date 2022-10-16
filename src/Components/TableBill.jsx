@@ -25,6 +25,7 @@ class Table extends Component {
                 PayedAmount={month.PayedAmount}
                 DateofPayment={month.DateofPayment}
                 onValueChange={this.props.onValueChange}
+                onDelete = {this.props.onDelete}
               />
             ))}
           </tbody>

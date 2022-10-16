@@ -78,6 +78,12 @@ class EditCustomer extends Component {
     customer.PPPOeId[index] = e.target.value;
     this.setState({ customer });
   };
+  onDelete = async id =>{
+    console.log("Id is " +id);
+    let customer = { ...this.state.customer };
+    customer.MonthlyCost.splice(id-1,1);
+  await  this.setState({customer : customer});
+  }
   render() {
     const { customer, packages } = this.state;
 
@@ -135,6 +141,7 @@ class EditCustomer extends Component {
                 customer={customer}
                 onNewRow={this.onNewMonthlyCost}
                 onValueChange={this.onMonthlyCostChange}
+                onDelete = {this.onDelete}
               />
 
               <button

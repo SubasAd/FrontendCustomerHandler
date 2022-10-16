@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 class TableRow extends Component {
   render() {
-    const { id, Cost, PayedAmount, DateofPayment, onValueChange } = this.props;
+    const { id, Cost, PayedAmount, DateofPayment, onValueChange, onDelete } = this.props;
     if(!id) return null;
     return (
       <tr>
@@ -32,6 +32,14 @@ class TableRow extends Component {
               onValueChange("PayedAmount", e, id);
             }}
           />
+        </td>
+        <td>
+          <button onClick={e=>{
+            e.preventDefault();
+           onDelete(id);
+          }} >
+            delete
+          </button>
         </td>
       </tr>
     );
