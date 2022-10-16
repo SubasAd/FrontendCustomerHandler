@@ -11,7 +11,7 @@ class Customer extends Component {
 
     return (
       <tr>
-        <td>{customer._id}</td>
+        <td>..</td>
         <td>
           <input
             className=" border-0"
@@ -52,9 +52,9 @@ class Customer extends Component {
         <td>
           <input
             className=" border-0"
-            value={customer.SuscribeDate}
+            value={customer.SuscribeDate.slice(0,10)}
             onChange={(e) => {
-              onValueChange(customer,"SuscribeDate", e.target.value);
+              onValueChange(customer,"SuscribeDate", e.target.value.slice(0,10));
             }}
           />
         </td>
@@ -62,9 +62,9 @@ class Customer extends Component {
         <td>
           <input
             className=" border-0"
-            value={customer.ConnectionDate}
+            value={customer.ConnectionDate.slice(0,10)}
             onChange={(e) => {
-              onValueChange(customer,"ConnectionDate", e.target.value);
+              onValueChange(customer,"ConnectionDate", e.target.value.slice(0,10));
             }}
           />
         </td>
@@ -124,12 +124,15 @@ class Customer extends Component {
       let subscribeDate = new Date(customer.SuscribeDate);
       if( (today-subscribeDate)/(1000*60*60*24) <0 ) {
            console.log(today - subscribeDate)
-        return Math.round((30+(subscribeDate -today)/(1000*60*60*24) ))
+          let result =  Math.round((30+(subscribeDate -today)/(1000*60*60*24) ));
+
+      return result.toString(10)
       } 
     
     
    
-      return Math.round(30-(today-subscribeDate)/(1000*60*60*24));
+      let result = Math.round(30-(today-subscribeDate)/(1000*60*60*24));
+      return result.toString(10)
     }
   }
 }
