@@ -120,14 +120,16 @@ class Customer extends Component {
     );
 
     function getDay() {
-      let today= new Date().getDate();
-     // let connectionDate =  new Date(customer.ConnectionDate).getDate();
-      let subscribeDate = new Date(customer.SuscribeDate).getDate();
-      if( (new Date().getMonth()-new Date(customer.SuscribeDate).getMonth()) >1.2 )  return ((subscribeDate -today)-30 )
+      let today= new Date();
+      let subscribeDate = new Date(customer.SuscribeDate);
+      if( (today-subscribeDate)/(1000*60*60*24) <0 ) {
+           console.log(today - subscribeDate)
+        return Math.round((30+(subscribeDate -today)/(1000*60*60*24) ))
+      } 
     
     
    
-      return subscribeDate -today;
+      return Math.round(30-(today-subscribeDate)/(1000*60*60*24));
     }
   }
 }
